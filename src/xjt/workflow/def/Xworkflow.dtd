@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    流程定义文件的文档类型定义。
+-->
+
+<!--
+	根元素workflow,可包含多个node子元素。
+-->
+<!ELEMENT workflow (node+)>
+<!--
+	workflow的name属性，定义流程定义的名称。
+-->
+<!ATTLIST workflow  name CDATA #REQUIRED>
+
+<!--
+	流程节点node，最多可包含一个action子元素和一个workitem子元素，
+	可包含零个或多个transition子元素。
+-->
+<!ELEMENT node  (action?,workitem?,transition*)>
+<!--
+	流程节点node的name属性，定义节点的名称。
+-->
+<!ATTLIST node  name CDATA #REQUIRED>
+<!--
+	流程节点node的type属性，定义节点的类型，只能取start、task、decision、
+	fork、join、end中的一个值。其中start表示开始节点，task表示任务节点，
+	decision表示判断节点，fork表示分支节点，join表示汇合节点，end表示结束节点。
+-->
+<!ATTLIST node  type (start|task|decision|fork|join|end) #REQUIRED>
+
+<!--
+	动作action定义，task或decision类型的node节点最多可包含一个动作action定义。
+-->
+<!ELEMENT action (#PCDATA)>
+<!--
+	动作action的name属性，定义动作action的名称。
+-->
+<!ATTLIST action  name CDATA #REQUIRED>
+<!--
+	动作action的class属性，定义实现特定action接口的类名称。
+-->
+<!ATTLIST action  class CDATA #REQUIRED>
+
+<!--
+	工作项workitem定义，task类型的node节点最多可包含一个工作项workitem定义。
+-->
+<!ELEMENT workitem (#PCDATA)>
+<!--
+	工作项workitem的name属性，定义工作项workitem的名称。
+-->
+<!ATTLIST workitem  name CDATA #REQUIRED>
+<!--
+	工作项workitem的owner属性，定义工作项workitem的拥有者标识。
+-->
+<!ATTLIST workitem  owner CDATA #REQUIRED>
+
+<!--
+	路径transition定义，除end类型的节点外，其它节点可包含零个或多个路径transition定义。
+-->
+<!ELEMENT transition (#PCDATA)>
+<!--
+	路径transition的name属性，定义路径transition的名称。
+-->
+<!ATTLIST transition  name CDATA #REQUIRED>
+<!--
+	路径的to属性，定义路径transition指向的节点名称。
+-->
+<!ATTLIST transition  to CDATA #REQUIRED>
