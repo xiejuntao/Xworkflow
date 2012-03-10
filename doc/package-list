@@ -1,0 +1,11 @@
+xjt.workflow.dao.hibernate
+xjt.workflow.def
+xjt.workflow.def.service
+xjt.workflow.def.service.impl
+xjt.workflow.exe
+xjt.workflow.exe.service
+xjt.workflow.exe.service.impl
+xjt.workflow.page
+xjt.workflow.service
+xjt.workflow.service.impl
+xjt.workflow.util
